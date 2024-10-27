@@ -27,6 +27,5 @@
 
     <ItemGroup>
         <Folder Include="Controller\"/>
-        <Folder Include="GraphQL\" />
     </ItemGroup>
 </Project>

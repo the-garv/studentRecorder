@@ -17,9 +17,9 @@ public class StudentRepository : IStudentRepository
         return await _dbContext.Students.Where(s => ids.Contains(s.Id)).ToListAsync();
     }
 
-    public async ValueTask<Models.Student?> GetAsync(long ids)
+    public async ValueTask<Models.Student?> GetAsync(long id)
     {
-        return await _dbContext.Students.FirstOrDefaultAsync(s => s.Id == ids);
+        return await _dbContext.Students.FirstOrDefaultAsync(s => s.Id == id);
     }
 
     public async ValueTask AddAsync(Models.Student student)
