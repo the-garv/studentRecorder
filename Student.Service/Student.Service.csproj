@@ -27,5 +27,6 @@
 
     <ItemGroup>
         <Folder Include="Controller\"/>
+        <Folder Include="GraphQL\Mutations\" />
     </ItemGroup>
 </Project>

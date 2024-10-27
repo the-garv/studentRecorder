@@ -1,3 +1,4 @@
+using GraphQL;
 using GraphQL.Types;
 using Student.Service.GraphQL.Types;
 using Student.Service.Repository;
@@ -8,8 +9,9 @@ public sealed class StudentQuery:ObjectGraphType
 {
     public StudentQuery(StudentRepository studentRepository)
     {
-        Field<ListGraphType<StudentType>>("courses")
-            .Description("List of courses")
-            .ResolveAsync(async _ => await studentRepository.GetAsync(new List<long>()));
+        Field<ListGraphType<StudentType>>("students")
+            .Description("List of students")
+            .Argument<NonNullGraphType<ListGraphType<LongGraphType>>>("ids")
+            .ResolveAsync(async context => await studentRepository.GetAsync(context.GetArgument<IReadOnlyList<long>>("ids")));
     }
 }
